@@ -12,9 +12,9 @@ async function postHumor(selecionado) {
     let content = await response.json();
 
     if(content.sucess) {
-        alert("Sucesso")
+        alert("Humor cadastrado com sucesso!")
     } else {
-        alert("Não");
+        alert("Humor não cadastrados.");
     }
 }
 
@@ -32,9 +32,9 @@ async function postSintomas(selecionado) {
     let content = await response.json();
 
     if(content.sucess) {
-        alert("Sucesso")
+        alert("Sintoma cadastrado com sucesso!")
     } else {
-        alert("Não");
+        alert("Sintoma não cadastrado.");
     }
 }
 
@@ -52,9 +52,9 @@ async function postAtiv_fisica(selecionado) {
     let content = await response.json();
 
     if(content.sucess) {
-        alert("Sucesso")
+        alert("Atividade física cadastrada com sucesso!")
     } else {
-        alert("Não");
+        alert("Atividade física não cadastrada.");
     }
 }
 
@@ -72,9 +72,9 @@ async function postTratamento(selecionado) {
     let content = await response.json();
 
     if(content.sucess) {
-        alert("Sucesso")
+        alert("Tratamento cadastrado com sucesso!")
     } else {
-        alert("Não");
+        alert("Tratamento não cadastrado.");
     }
 }
 
@@ -92,9 +92,9 @@ async function postSono(selecionado) {
     let content = await response.json();
 
     if(content.sucess) {
-        alert("Sucesso")
+        alert("Noite de sono cadastrada com sucesso!")
     } else {
-        alert("Não");
+        alert("Noite de sono não cadastrada.");
     }
 }
 
