@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --lilas-escuro: #9F52FF;
+    --lilas-medio: #B377FF;
+    --lilas: #C7ACFF;
+    --lilas-claro: #D5CAC4;
+    --branco: #FFFFFF;
+    --roxo: #9642FF;
+}
+
+/* -------------------BODY------------------- */
+
+body{
+    height: 100vh;
+    background: rgb(159,82,255);
+    background: linear-gradient(180deg, rgba(159,82,255,1) 0%, rgba(179,119,255,1) 39%, rgba(199,172,255,1) 59%, rgba(213,202,196,1) 100%);
+}
+
+/* ------------HEADER------------ */
+
+.container-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 32%;
+}
+
+.imagem-logo{
+    display: flex;
+    justify-content: center;
+    height: 25vh;
+    width: 90vw;
+}
+
+/* ------------MAIN------------ */
+
+.container-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.h1-main{
+    font-size: 29px;
+    color: var(--branco);
+    font-weight: 600;
+    text-shadow: black 0.1em 0.1em 0.4em
+}
+
+.h2-main{
+    color: var(--branco);
+    font-weight: 600;
+    padding-top: 6%;
+    text-shadow: black 0.1em 0.1em 0.4em
+}
+
+.forms-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    gap: 10px;
+}
+
+input{
+    width: 88vw;
+    height: 4vh;
+    border-radius: 50px;
+    border: none;
+    opacity: 0.7;
+}
+
+input::placeholder{
+    padding-left: 5%;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+button{
+    width: 74vw;
+    height: 4vh;
+    border-radius: 50px;
+    border: none;
+    margin-top: 10%;
+    color: var(--branco);
+    background-color: var(--roxo);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+a{
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 400;
+    padding-top: 2%;
+    text-shadow: black 0.1em 0.1em 0.4em
+}
