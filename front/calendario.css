@@ -78,11 +78,6 @@ header .icons span:last-child{
     margin-bottom: 20px;
 }
 
-.calendar .days li{
-    margin-top: 30px;
-    cursor: pointer;
-}
-
 .calendar .weeks li{
     font-weight: 500;
 }
@@ -90,6 +85,20 @@ header .icons span:last-child{
 .calendar ul li{
     position: relative;
     width: calc(100% / 7);
+}
+
+.calendar .days li{
+    margin-top: 30px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+li.inactive{
+    color: #aaa;
+}
+
+li.active{
+    color: var(--branco);
 }
 
 .calendar .days li::before{
@@ -101,8 +110,13 @@ header .icons span:last-child{
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
+    z-index: -1;
 }
 
 .days li:hover::before{
     background: #f2f2f2;
+}
+
+.days li.active::before{
+    background: var(--roxo);
 }
