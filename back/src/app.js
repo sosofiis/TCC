@@ -7,6 +7,8 @@ const ativ_fisicaRouter = require('./routes/ativ_fisicaRouter');
 const tratamentoRouter = require('./routes/tratamentoRouter');
 const sonoRouter = require('./routes/sonoRouter');
 
+const cadastroRouter = require('./routes/cadastroRouter');
+
 const cors = require('cors');
 const app = express();
 
@@ -19,5 +21,7 @@ app.use('/api', sintomasRouter);
 app.use('/api', ativ_fisicaRouter);
 app.use('/api', tratamentoRouter);
 app.use('/api', sonoRouter);
+
+app.use('/api', cadastroRouter);
 
 module.exports = app;
