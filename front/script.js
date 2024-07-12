@@ -108,3 +108,4 @@ function formatDate(date, format) {
 
     return format.replace(/mm|dd|aa|aaaa/gi, matched => map[matched])
 }
+
