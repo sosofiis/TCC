@@ -6,6 +6,7 @@ const sintomasRouter = require('./routes/sintomasRouter');
 const ativ_fisicaRouter = require('./routes/ativ_fisicaRouter');
 const tratamentoRouter = require('./routes/tratamentoRouter');
 const sonoRouter = require('./routes/sonoRouter');
+const loginRouter = require('./routes/loginRouter');
 
 const cadastroRouter = require('./routes/cadastroRouter');
 
@@ -21,6 +22,7 @@ app.use('/api', sintomasRouter);
 app.use('/api', ativ_fisicaRouter);
 app.use('/api', tratamentoRouter);
 app.use('/api', sonoRouter);
+app.use('/api', loginRouter);
 
 app.use('/api', cadastroRouter);
 
