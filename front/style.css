@@ -36,6 +36,7 @@ body {
     display: flex;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .icon-voltar{
@@ -94,7 +95,7 @@ body {
 
 .botao-icons{
     border: none;
-    border-radius: 10px;
+    border-radius: 35px;
     background-color: var(--lilas);
     height: 8vh;
 }
