@@ -19,7 +19,7 @@ textoData.innerHTML = `${dia} de ${months[mes]} de ${ano}`
 
 //um evento de onload na pagina 
 //linha 24, 25 só que só com data || linha 27, 28, 29, 30, 31... 
-window.onload = async function() {
+window.onload = async function () {
     let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd');
     let dados = { data }
 
@@ -33,6 +33,14 @@ window.onload = async function() {
 
     if (content.sucess) {
         console.log(content)
+        for (let index = 0; index < content.data.length; index++) {
+            const element = content.data[index];
+            const id = element.humor
+
+            const minhaDiv = document.getElementById(id);
+
+            minhaDiv.style.backgroundColor = "#8237de";
+        }
     } else {
         console.log(content)
     }
@@ -40,6 +48,11 @@ window.onload = async function() {
 
 async function postHumor(selecionado) {
     let humor = selecionado;
+
+    const minhaDiv = document.getElementById(humor);
+
+    minhaDiv.style.backgroundColor = "#8237de";
+
     let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, humor }
 
@@ -52,7 +65,7 @@ async function postHumor(selecionado) {
     let content = await response.json();
 
     if (content.sucess) {
-        alert("Humor cadastrado com sucesso!")
+       
     } else {
         alert("Humor não cadastrados.");
     }

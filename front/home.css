@@ -48,6 +48,7 @@
     --lilas-claro: #D5CAC4;
     --branco: #FFFFFF;
     --roxo: #9642FF;
+    --roxo-escuro: #5C0BC0;
 }
 
 /* -------------------BODY------------------- */
@@ -81,7 +82,7 @@ header{
     font-weight: 800;
 }
 
-.material-symbols-outlined{
+#menu{
     font-size: 40px;
 }
 
@@ -91,23 +92,84 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin: 2%;
 }
 
 .sessao-perfil{
-    background-color: white;
     width: 90vw;
     height: 24vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     /* align-items: center;
     justify-content: center; */
 }
 
+.div-texto{
+    display: flex;
+    flex-direction: column;
+}
+
 .texto-ola{
     font-size: 35px;
+    color: var(--roxo-escuro);
 }
 
 .texto-pergunta{
     font-size: 18px;
+    color: var(--branco);
 }
+
+#account-circle{
+    font-size: 80px;
+    color: var(--branco);
+}
+
+.sessao-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.div-card1{
+    background-color: var(--roxo-escuro);
+    width: 90vw;
+    height: 5vh;
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.card-texto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.h2{
+    color: var(--branco);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.botao-redirecionamento{
+    background-color: transparent;
+    border: none;
+}
+
+#arrow-forward{
+    font-size: 40px;
+    color: var(--branco);
+}
+
+/* #calendar_div{
+    position: relative;
+}
+#calendar_month{
+    color: var(--branco);
+    font-size: 50px;
+    float: right;
+    padding-top: 20%;
+    
+} */
