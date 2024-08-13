@@ -131,6 +131,7 @@ main{
     flex-direction: column;
     gap: 10px;
     justify-content: center;
+    align-items: center;
 }
 
 .div-card1{
@@ -145,6 +146,7 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .h2{
@@ -163,13 +165,6 @@ main{
     color: var(--branco);
 }
 
-/* #calendar_div{
-    position: relative;
-}
-#calendar_month{
-    color: var(--branco);
-    font-size: 50px;
-    float: right;
-    padding-top: 20%;
-    
+/* img{
+    height: 1vh;
 } */

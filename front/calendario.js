@@ -1,3 +1,8 @@
+document.getElementById("botaoVoltar").addEventListener("click",
+    function () {
+        history.back();
+    });
+
 //Onde fica escrito o mês, pega essa info
 const currentDate = document.querySelector(".current-date"),
 // Onde fica os dias
