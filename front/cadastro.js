@@ -21,6 +21,7 @@ botaoCadastro.addEventListener("click", async function() {
 
         if(content.sucess) {
             alert("Usuário cadastrado com sucesso!")
+            window.location.href = './home.html';
         } else {
             alert("Usuário não cadastrado.");
         }

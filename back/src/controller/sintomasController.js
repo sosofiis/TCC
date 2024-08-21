@@ -63,7 +63,40 @@ async function getSintomas(request, response) {
 
 }
 
+async function deleteSintomas(request, response) {
+    const params = Array(
+        request.body.data, 
+        request.body.sintomas
+    );
+
+    console.log(params);
+    const query = "DELETE from sintomas where data = ? and sintomas = ? ";
+
+    connection.query(query, params, (err, results) => {
+        if (results) { 
+            response
+            .status(201)
+            .json({
+                sucess: true,
+                message: "Sucesso!",
+                data: results
+            })
+        } else {
+            console.log(err);
+            response
+            .status(400)
+            .json({
+                sucess: false,
+                message: "Ops, deu problema!",
+                sql: err
+            })
+        }
+    })
+
+}
+
 module.exports = {
     storeSintomas,
-    getSintomas
+    getSintomas, 
+    deleteSintomas
 }

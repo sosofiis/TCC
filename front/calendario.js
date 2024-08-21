@@ -74,5 +74,5 @@ function abrirDia(dia, mes, ano) {
     window.location.href = './index.html'
     
     console.log(dia, mes, ano)
-    alert("funciono")
+    // alert("funciono")
 }

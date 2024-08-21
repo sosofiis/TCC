@@ -1,7 +1,8 @@
 document.getElementById("botaoVoltar").addEventListener("click",
     function () {
         history.back();
-    });
+    }
+);
 
 const textoData = document.querySelector(".texto-regst");
 
@@ -11,19 +12,13 @@ let ano = localStorage.getItem('ano');
 
 const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-// console.log(dia)
-// console.log(months[mes])
-// console.log(ano)
-
 textoData.innerHTML = `${dia} de ${months[mes]} de ${ano}`
 
-//um evento de onload na pagina 
-//linha 24, 25 só que só com data || linha 27, 28, 29, 30, 31... 
 window.onload = async function () {
     let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd');
     let dados = { data }
 
-    const response = await fetch('http://localhost:3000/api/get/humor', {
+    let response = await fetch('http://localhost:3000/api/get/humor', {
         method: "POST",
         headers: { "Content-type": "application/json;charset=UTF-8" },
         body: JSON.stringify(dados)
@@ -39,7 +34,100 @@ window.onload = async function () {
 
             const minhaDiv = document.getElementById(id);
 
-            minhaDiv.style.backgroundColor = "#8237de";
+            minhaDiv.classList.remove("bg-unclicked");
+            minhaDiv.classList.add("bg-clicked");
+        }
+    } else {
+        console.log(content)
+    }
+
+    response = await fetch('http://localhost:3000/api/get/sintomas', {
+        method: "POST",
+        headers: { "Content-type": "application/json;charset=UTF-8" },
+        body: JSON.stringify(dados)
+    });
+
+    content = await response.json();
+
+    if (content.sucess) {
+        console.log(content)
+        for (let index = 0; index < content.data.length; index++) {
+            const element = content.data[index];
+            const id = element.humor
+
+            const minhaDiv = document.getElementById(id);
+
+            minhaDiv.classList.remove("bg-unclicked");
+            minhaDiv.classList.add("bg-clicked");
+        }
+    } else {
+        console.log(content)
+    }
+
+    response = await fetch('http://localhost:3000/api/get/ativ_fisica', {
+        method: "POST",
+        headers: { "Content-type": "application/json;charset=UTF-8" },
+        body: JSON.stringify(dados)
+    });
+
+    content = await response.json();
+
+    if (content.sucess) {
+        console.log(content)
+        for (let index = 0; index < content.data.length; index++) {
+            const element = content.data[index];
+            const id = element.humor
+
+            const minhaDiv = document.getElementById(id);
+
+            minhaDiv.classList.remove("bg-unclicked");
+            minhaDiv.classList.add("bg-clicked");
+        }
+    } else {
+        console.log(content)
+    }
+
+    response = await fetch('http://localhost:3000/api/get/tratamento', {
+        method: "POST",
+        headers: { "Content-type": "application/json;charset=UTF-8" },
+        body: JSON.stringify(dados)
+    });
+
+    content = await response.json();
+
+    if (content.sucess) {
+        console.log(content)
+        for (let index = 0; index < content.data.length; index++) {
+            const element = content.data[index];
+            const id = element.humor
+
+            const minhaDiv = document.getElementById(id);
+
+            minhaDiv.classList.remove("bg-unclicked");
+            minhaDiv.classList.add("bg-clicked");
+        }
+    } else {
+        console.log(content)
+    }
+
+    response = await fetch('http://localhost:3000/api/get/sono', {
+        method: "POST",
+        headers: { "Content-type": "application/json;charset=UTF-8" },
+        body: JSON.stringify(dados)
+    });
+
+    content = await response.json();
+
+    if (content.sucess) {
+        console.log(content)
+        for (let index = 0; index < content.data.length; index++) {
+            const element = content.data[index];
+            const id = element.humor
+
+            const minhaDiv = document.getElementById(id);
+
+            minhaDiv.classList.remove("bg-unclicked");
+            minhaDiv.classList.add("bg-clicked");
         }
     } else {
         console.log(content)
@@ -51,103 +139,223 @@ async function postHumor(selecionado) {
 
     const minhaDiv = document.getElementById(humor);
 
-    minhaDiv.style.backgroundColor = "#8237de";
-
     let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, humor }
 
-    const response = await fetch('http://localhost:3000/api/store/humor', {
-        method: "POST",
-        headers: { "Content-type": "application/json;charset=UTF-8" },
-        body: JSON.stringify(dados)
-    });
+    if (minhaDiv.classList.contains("bg-unclicked")) {
+        minhaDiv.classList.remove("bg-unclicked");
+        minhaDiv.classList.add("bg-clicked");
 
-    let content = await response.json();
+        const response = await fetch('http://localhost:3000/api/store/humor', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
 
-    if (content.sucess) {
-       
+        let content = await response.json();
+
+        if (content.sucess) {
+
+        } else {
+            alert("Humor não cadastrados.");
+        }
+
     } else {
-        alert("Humor não cadastrados.");
+        minhaDiv.classList.remove("bg-clicked");
+        minhaDiv.classList.add("bg-unclicked");
+
+        const response = await fetch('http://localhost:3000/api/delete/humor', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
+
+        let content = await response.json();
+        console.log(content)
+        if (content.sucess) {
+
+        } else {
+            alert("Humor não cadastrados.");
+        }
     }
 }
 
 async function postSintomas(selecionado) {
     let sintomas = selecionado;
+    const minhaDiv = document.getElementById(sintomas);
+
     let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, sintomas }
 
-    const response = await fetch('http://localhost:3000/api/store/sintomas', {
-        method: "POST",
-        headers: { "Content-type": "application/json;charset=UTF-8" },
-        body: JSON.stringify(dados)
-    });
+    if (minhaDiv.classList.contains("bg-unclicked")) {
+        minhaDiv.classList.remove("bg-unclicked");
+        minhaDiv.classList.add("bg-clicked");
 
-    let content = await response.json();
+        const response = await fetch('http://localhost:3000/api/store/sintomas', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
 
-    if (content.sucess) {
-        alert("Sintoma cadastrado com sucesso!")
+        let content = await response.json();
+
+        if (content.sucess) {
+            // alert("Sintoma cadastrado com sucesso!")
+        } else {
+            alert("Sintoma não cadastrado.");
+        }
+
     } else {
-        alert("Sintoma não cadastrado.");
+        minhaDiv.classList.remove("bg-clicked");
+        minhaDiv.classList.add("bg-unclicked");
+
+        const response = await fetch('http://localhost:3000/api/delete/sintomas', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
+
+        let content = await response.json();
+
+        if (content.sucess) {
+            // alert("Sintoma cadastrado com sucesso!")
+        } else {
+            alert("Sintoma não cadastrado.");
+        }
     }
 }
 
 async function postAtiv_fisica(selecionado) {
     let ativ = selecionado;
+    const minhaDiv = document.getElementById(ativ);
+
     let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, ativ }
 
-    const response = await fetch('http://localhost:3000/api/store/ativ_fisica', {
-        method: "POST",
-        headers: { "Content-type": "application/json;charset=UTF-8" },
-        body: JSON.stringify(dados)
-    });
+    if (minhaDiv.classList.contains("bg-unclicked")) {
+        minhaDiv.classList.remove("bg-unclicked");
+        minhaDiv.classList.add("bg-clicked");
 
-    let content = await response.json();
+        const response = await fetch('http://localhost:3000/api/store/ativ_fisica', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
 
-    if (content.sucess) {
-        alert("Atividade física cadastrada com sucesso!")
+        let content = await response.json();
+
+        if (content.sucess) {
+
+        } else {
+            alert("Atividade física não cadastrada.");
+        }
+
     } else {
-        alert("Atividade física não cadastrada.");
+        minhaDiv.classList.remove("bg-clicked");
+        minhaDiv.classList.add("bg-unclicked");
+
+        const response = await fetch('http://localhost:3000/api/delete/ativ_fisica', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
+
+        let content = await response.json();
+        console.log(content)
+        if (content.sucess) {
+
+        } else {
+            alert("Atividade física não cadastrada.");
+        }
     }
 }
 
 async function postTratamento(selecionado) {
     let tratamento = selecionado;
+    const minhaDiv = document.getElementById(tratamento);
+
     let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, tratamento }
 
-    const response = await fetch('http://localhost:3000/api/store/tratamento', {
-        method: "POST",
-        headers: { "Content-type": "application/json;charset=UTF-8" },
-        body: JSON.stringify(dados)
-    });
+    if (minhaDiv.classList.contains("bg-unclicked")) {
+        minhaDiv.classList.remove("bg-unclicked");
+        minhaDiv.classList.add("bg-clicked");
 
-    let content = await response.json();
+        const response = await fetch('http://localhost:3000/api/store/tratamento', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
 
-    if (content.sucess) {
-        alert("Tratamento cadastrado com sucesso!")
+        let content = await response.json();
+
+        if (content.sucess) {
+            // alert("Tratamento cadastrado com sucesso!")
+        } else {
+            alert("Tratamento não cadastrado.");
+        }
+
     } else {
-        alert("Tratamento não cadastrado.");
+        minhaDiv.classList.remove("bg-clicked");
+        minhaDiv.classList.add("bg-unclicked");
+
+        const response = await fetch('http://localhost:3000/api/delete/tratamento', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
+
+        let content = await response.json();
+
+        if (content.sucess) {
+            // alert("Tratamento cadastrado com sucesso!")
+        } else {
+            alert("Tratamento não cadastrado.");
+        }
     }
 }
 
 async function postSono(selecionado) {
     let sono = selecionado;
+    const minhaDiv = document.getElementById(sono);
+
     let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, sono }
 
-    const response = await fetch('http://localhost:3000/api/store/sono', {
-        method: "POST",
-        headers: { "Content-type": "application/json;charset=UTF-8" },
-        body: JSON.stringify(dados)
-    });
+    if (minhaDiv.classList.contains("bg-unclicked")) {
+        minhaDiv.classList.remove("bg-unclicked");
+        minhaDiv.classList.add("bg-clicked");
 
-    let content = await response.json();
+        const response = await fetch('http://localhost:3000/api/store/sono', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
 
-    if (content.sucess) {
-        alert("Noite de sono cadastrada com sucesso!")
+        let content = await response.json();
+
+        if (content.sucess) {
+            // alert("Noite de sono cadastrada com sucesso!")
+        } else {
+            alert("Noite de sono não cadastrada.");
+        }
     } else {
-        alert("Noite de sono não cadastrada.");
+        minhaDiv.classList.remove("bg-clicked");
+        minhaDiv.classList.add("bg-unclicked");
+
+        const response = await fetch('http://localhost:3000/api/delete/sono', {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(dados)
+        });
+
+        let content = await response.json();
+
+        if (content.sucess) {
+            // alert("Noite de sono cadastrada com sucesso!")
+        } else {
+            alert("Noite de sono não cadastrada.");
+        }
     }
 }
 

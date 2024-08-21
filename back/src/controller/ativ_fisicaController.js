@@ -63,7 +63,40 @@ async function getAtiv_fisica(request, response) {
 
 }
 
+async function deleteAtiv_fisica(request, response) {
+    const params = Array(
+        request.body.data, 
+        request.body.ativ
+    );
+
+    console.log(params);
+    const query = "DELETE from ativ_fisica where data = ? and ativ = ? ";
+
+    connection.query(query, params, (err, results) => {
+        if (results) { 
+            response
+            .status(201)
+            .json({
+                sucess: true,
+                message: "Sucesso!",
+                data: results
+            })
+        } else {
+            console.log(err);
+            response
+            .status(400)
+            .json({
+                sucess: false,
+                message: "Ops, deu problema!",
+                sql: err
+            })
+        }
+    })
+
+}
+
 module.exports = {
     storeAtiv_fisica,
-    getAtiv_fisica
+    getAtiv_fisica,
+    deleteAtiv_fisica
 }

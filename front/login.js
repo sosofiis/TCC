@@ -18,7 +18,7 @@ async function handleSubmit(event) {
 
     if (result.success) {
         alert(result.message)
-        window.location.href = './index.html';
+        window.location.href = './home.html';
     } else {
         alert(result.message)
     }

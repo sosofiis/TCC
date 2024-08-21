@@ -96,8 +96,16 @@ body {
 .botao-icons{
     border: none;
     border-radius: 35px;
-    background-color: var(--lilas);
+    /* background-color: var(--lilas); */
     height: 8vh;
+}
+
+.bg-unclicked {
+    background-color: var(--lilas);
+}
+
+.bg-clicked {
+    background-color: #8237de;
 }
 
 .botao-icons:active{
