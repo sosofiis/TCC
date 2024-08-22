@@ -1,6 +1,5 @@
 let botaoCadastro = document.querySelector("#cadastro");
 
-
 botaoCadastro.addEventListener("click", async function() {
     // alert("teste");
     const nome = document.querySelector("#nome").value;
@@ -20,7 +19,7 @@ botaoCadastro.addEventListener("click", async function() {
         let content = await response.json();
 
         if(content.sucess) {
-            alert("Usuário cadastrado com sucesso!")
+            // alert("Usuário cadastrado com sucesso!")
             window.location.href = './home.html';
         } else {
             alert("Usuário não cadastrado.");

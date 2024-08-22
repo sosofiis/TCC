@@ -53,7 +53,7 @@ window.onload = async function () {
         console.log(content)
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
-            const id = element.humor
+            const id = element.sintomas
 
             const minhaDiv = document.getElementById(id);
 
@@ -76,7 +76,7 @@ window.onload = async function () {
         console.log(content)
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
-            const id = element.humor
+            const id = element.ativ
 
             const minhaDiv = document.getElementById(id);
 
@@ -99,7 +99,7 @@ window.onload = async function () {
         console.log(content)
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
-            const id = element.humor
+            const id = element.tratamento
 
             const minhaDiv = document.getElementById(id);
 
@@ -122,7 +122,7 @@ window.onload = async function () {
         console.log(content)
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
-            const id = element.humor
+            const id = element.sono
 
             const minhaDiv = document.getElementById(id);
 

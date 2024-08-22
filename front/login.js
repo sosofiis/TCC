@@ -17,7 +17,7 @@ async function handleSubmit(event) {
     const result = await response.json();
 
     if (result.success) {
-        alert(result.message)
+        // alert(result.message)
         window.location.href = './home.html';
     } else {
         alert(result.message)
