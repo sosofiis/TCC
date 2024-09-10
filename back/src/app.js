@@ -8,6 +8,7 @@ const tratamentoRouter = require('./routes/tratamentoRouter');
 const sonoRouter = require('./routes/sonoRouter');
 const loginRouter = require('./routes/loginRouter');
 const cadastroRouter = require('./routes/cadastroRouter');
+const cadastrarPost = require('./routes/feedRouter');
 
 const cors = require('cors');
 const app = express();
@@ -23,5 +24,6 @@ app.use('/api', tratamentoRouter);
 app.use('/api', sonoRouter);
 app.use('/api', loginRouter);
 app.use('/api', cadastroRouter);
+app.use('/api', cadastrarPost);
 
 module.exports = app;
