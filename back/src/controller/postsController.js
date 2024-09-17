@@ -1,0 +1,62 @@
+const connection = require('../config/db');
+const dotenv = require('dotenv').config();
+
+async function storePost(request, response) {
+    const params = Array(
+        request.body.id_usuario,
+        request.body.title,
+        request.body.conteudo,
+        request.body.imagem
+    )
+
+    let query = "INSERT INTO posts(id_usuario, title, conteudo, imagem) VALUES(?, ?, ?, ?)";
+
+    connection.query(query, params, (err, results) => {
+        if(results) {
+            response
+                .status(200)
+                .json({
+                    success: true,
+                    message: 'Sucesso!',
+                    data: results
+                })
+        } else {
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: 'Sem sucesso!',
+                    sql: err
+                });
+        }
+    });
+}
+
+async function getPost(request, response) {
+    const query = "SELECT * FROM posts";
+
+    connection.query(query, (err, results) => {
+        if(results) {
+            response
+                .status(200)
+                .json({
+                    success: true,
+                    message: 'Sucesso!',
+                    data: results
+                })
+        } else {
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: 'Sem sucesso!',
+                    sql: err
+                });
+        }
+    });
+}
+
+module.exports = {
+    storePost,
+    getPost
+}

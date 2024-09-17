@@ -17,7 +17,11 @@ async function handleSubmit(event) {
     const result = await response.json();
 
     if (result.success) {
-        // alert(result.message)
+        localStorage.setItem('dados_usuario', JSON.stringify(result.data))
+        // para limpar o local storage
+        // deleteItem("dados_usuario")
+        // window.location.href = './login.html';
+
         window.location.href = './home.html';
     } else {
         alert(result.message)

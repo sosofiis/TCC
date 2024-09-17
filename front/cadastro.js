@@ -19,7 +19,7 @@ botaoCadastro.addEventListener("click", async function() {
         let content = await response.json();
 
         if(content.sucess) {
-            // alert("Usuário cadastrado com sucesso!")
+            localStorage.setItem('dados_usuario', JSON.stringify(result.data))
             window.location.href = './home.html';
         } else {
             alert("Usuário não cadastrado.");

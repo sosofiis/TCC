@@ -1,7 +1,7 @@
 const connection = require('../config/db');
 
 async function loginUser(request, response) {
-    const query = "SELECT email, senha FROM fj_users WHERE `email` = ?";
+    const query = "SELECT id, nome, email, senha FROM fj_users WHERE `email` = ?";
 
     // Recuperar credenciais informadas
     const params = Array(
@@ -18,7 +18,7 @@ async function loginUser(request, response) {
                         .json({
                             success: true,
                             message: `Sucesso! Usuário conectado.`,
-                            data: results
+                            data: results[0]
                         });
                 } else {
                     response

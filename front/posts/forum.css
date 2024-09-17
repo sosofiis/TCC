@@ -59,7 +59,7 @@ body{
 }
 
 .user-avatar {
-    width: 50px;
+    width: 85px;
     height: 50px;
     background-color: #000;
     border-radius: 50%;
@@ -82,6 +82,17 @@ body{
 
 .user-interactions{
     display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.button-interactions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .section-button-post{
