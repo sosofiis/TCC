@@ -28,4 +28,50 @@ body{
     height: 50vh;
     width: 83vw;
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 35px;
+}
+
+p{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    width: 78vw;
+    gap: 12px;
+}
+
+label{
+    font-size: 22px;
+}
+
+input{
+    height: 2vh;
+    border-radius: 50px;
+    border: none;
+    opacity: 0.7;
+    padding: 9px;
+}
+
+input::placeholder{
+    padding-left: 2%;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+button{
+    height: 4vh;
+    border-radius: 50px;
+    border: none;
+    margin-top: 10%;
+    /* color: var(--branco); */
+    background-color: var(--roxo);
+    font-size: 18px;
+    font-weight: 600;
 }
