@@ -73,11 +73,21 @@ body{
 
 .user-text {
     flex: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .user-text p {
     margin: 5px 0 0 0;
     color: #333;
+}
+
+h3{
+    font-size: 21px;
+}
+
+h4{
+    font-size: 18px;
 }
 
 .user-interactions{

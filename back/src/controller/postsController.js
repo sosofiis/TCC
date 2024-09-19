@@ -33,7 +33,7 @@ async function storePost(request, response) {
 }
 
 async function getPost(request, response) {
-    const query = "SELECT * FROM posts";
+    const query = "select fj_users.nome, posts.* from fj_users, posts  where posts.id_usuario = fj_users.id";
 
     connection.query(query, (err, results) => {
         if(results) {

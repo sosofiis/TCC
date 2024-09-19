@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --lilas-escuro: #9F52FF;
+    --lilas-medio: #B377FF;
+    --lilas: #C7ACFF;
+    --lilas-claro: #D5CAC4;
+    --branco: #FFFFFF;
+    --roxo: #9642FF;
+}
+
+/* -------------------BODY------------------- */
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--roxo);
+}
+
+.create-post{
+    background-color: var(--lilas);
+    height: 50vh;
+    width: 83vw;
+    padding: 25px;
+}
