@@ -56,7 +56,34 @@ async function getPost(request, response) {
     });
 }
 
+async function getPostById(request, response) {
+    const params = Array (
+        request.params.id
+    )
+
+    const query = "SELECT * FROM posts WHERE id = ?"
+
+    connection.query(query, params, (err, results) => {
+        if(results.length > 0) {
+            response.status(200).json({
+                success: true,
+                data: results[0],
+                message: "Sucesso!"
+            })
+        } else {
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: 'Sem sucesso!',
+                    sql: err
+                });
+        }
+    })
+}
+
 module.exports = {
     storePost,
-    getPost
+    getPost,
+    getPostById
 }

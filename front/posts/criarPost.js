@@ -1,3 +1,8 @@
+document.getElementById("botaoVoltar").addEventListener("click",
+    function () {
+        history.back();
+    });
+
 async function enviar(event) {
     event.preventDefault();
 

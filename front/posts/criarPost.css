@@ -16,11 +16,40 @@
 /* -------------------BODY------------------- */
 
 body{
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--roxo);
+    flex-direction: column;
+}
+
+.sessao-1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    
+
+}
+
+.botao-voltar{
+    height: 3vh;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.icon-voltar{
+
+    height: 3vh;
+    display: flex;
+    
 }
 
 .create-post{
@@ -32,6 +61,8 @@ body{
     flex-direction: column;
     align-items: center;
     border-radius: 35px;
+    justify-content: center;
+    margin-top: 20vh;
 }
 
 p{

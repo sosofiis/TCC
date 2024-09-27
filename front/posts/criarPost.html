@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed</title>
+    <title>Criar post</title>
     <link rel="stylesheet" href="criarPost.css">
 </head>
 
 <body>
+    <section class="sessao-1">
+        <button class="botao-voltar" id="botaoVoltar">
+            <img src="../imagens/icon-voltar.png" alt="seta para voltar" class="icon-voltar">
+        </button>
+    </section>
+
     <section class="create-post">
         <p>Criar post</p>
         <form action="#">
@@ -17,9 +23,6 @@
 
             <label for="conteudo">Descrição</label>
             <input type="text" id="conteudo" placeholder="Descrição">
-
-            <label for="imagem">Imagem</label>
-            <input type="text" id="imagem" placeholder="Imagem">
 
             <button type="button" id="enviar_" onclick="enviar(event)">Postar</button>
         </form>

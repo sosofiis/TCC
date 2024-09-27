@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         result.data.forEach(posts => {
             const card = document.createElement('div');
             card.className = 'user-card';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                window.location.href = `postDetalhes.html?id=${posts.id}`
+            })
 
             const cardPost = document.createElement('div');
             cardPost.className = 'post';
@@ -64,3 +68,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('Erro', result.sql);
     }
 })
+
+document.getElementById("buttonPost").addEventListener("click",
+    function () {
+        window.location.href = './criarPost.html';
+});

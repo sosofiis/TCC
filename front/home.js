@@ -14,5 +14,5 @@ document.getElementById("botaoRed2").addEventListener("click",
 
 document.getElementById("botaoRed3").addEventListener("click",
     function () {
-        window.location.href = './posts/posts.html';
+        window.location.href = './posts/forum.html';
     });
