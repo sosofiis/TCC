@@ -11,6 +11,7 @@ const cadastroRouter = require('./routes/cadastroRouter');
 const loginRouter = require('./routes/loginRouter');
 
 const postsRouter = require('./routes/postsRouter');
+const commentRouter = require('./routes/commentsRouter');
 
 const cors = require('cors');
 const app = express();
@@ -29,6 +30,6 @@ app.use('/api', cadastroRouter)
 app.use('/api', loginRouter);
 
 app.use('/api', postsRouter);
-
+app.use('/api', commentRouter);
 
 module.exports = app;

@@ -81,11 +81,18 @@ footer{
     padding: 25px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .respostas{
     display: flex;
     gap: 5px;
+}
+
+form{
+    display: flex;
+    gap: 5px;
+    padding-bottom: 10px;
 }
 
 input{
