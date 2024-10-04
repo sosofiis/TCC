@@ -16,8 +16,8 @@
 /* -------------------BODY------------------- */
 
 body{
-    background: rgb(159,82,255);
-    background: linear-gradient(180deg, rgba(159,82,255,1) 0%, rgba(179,119,255,1) 39%, rgba(199,172,255,1) 59%, rgba(213,202,196,1) 100%);
+    background: var(--lilas-medio);
+    /* background: linear-gradient(180deg, rgba(159,82,255,1) 0%, rgba(179,119,255,1) 39%, rgba(199,172,255,1) 59%, rgba(213,202,196,1) 100%); */
     /* display: flex;
     align-items: center;
     justify-content: center; */
@@ -65,16 +65,19 @@ main{
 }
 
 h3{
-    font-size: 25px;
+    font-size: 28px;
 }
 
+
+
 h4{
-    font-size: 23px;
+    font-size: 24px;
     padding-bottom: 8px;
+    font-weight: 600;
 }
 
 p{
-    font-size: 22px;
+    font-size: 23px;
 }
 
 footer{
@@ -96,15 +99,15 @@ form{
 }
 
 input{
-    height: 4vh;
+    height: 6vh;
     width: 68vw;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.50);;
+    border-bottom: 1px solid rgba(0,0,0,0.50);
 }
 
 input::placeholder{
-    font-size: 20px;
+    font-size: 22px;
     color: rgba(0,0,0,0.50);
 }
 
@@ -115,4 +118,22 @@ button{
     padding: 5px;
     border-radius: 10px;
     font-weight: 600;
+}
+
+.h3-comentarios{
+    padding-bottom: 10px;
+}
+
+.comentarios{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comentario{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #D4BFFF;
+    border-radius: 10px;
 }

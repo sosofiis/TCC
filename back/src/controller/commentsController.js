@@ -1,13 +1,16 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
+const id_post = require("../../../front/posts/postsDetalhes.js")
 
 async function storeComment(request, response) {
     const params = Array(
+        //request id post
         request.body.id_usuario,
-        request.body.comentario
+        request.body.comentario,
+        request.body.id_post
     )
 
-    let query = "INSERT INTO comments(id_usuario, content) VALUES(?, ?)";
+    let query = "INSERT INTO comments(id_usuario, content, id_post) VALUES(?, ?, ?)";
 
     connection.query(query, params, (err, results) => {
         if(results) {
@@ -31,8 +34,14 @@ async function storeComment(request, response) {
 }
 
 async function getComment(request, response) {
-    const query = "select fj_users.nome, comments.* from fj_users, comments  where comments.id_usuario = fj_users.id";
-
+    //filtrar também com id do post
+    const query = `
+    SELECT fj_users.nome, comments.* 
+    FROM comments
+    INNER JOIN fj_users ON fj_users.id = comments.id_usuario
+    INNER JOIN posts ON posts.id = comments.id_post
+    WHERE comments.id_usuario = fj_users.id AND comments.id_post = ${id_post};
+    `
     connection.query(query, (err, results) => {
         if(results) {
             response

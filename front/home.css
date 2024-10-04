@@ -119,6 +119,7 @@ main{
 .texto-pergunta{
     font-size: 18px;
     color: var(--branco);
+    font-family: "Comfortaa";
 }
 
 #account-circle{
@@ -129,7 +130,7 @@ main{
 .sessao-cards{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -153,6 +154,7 @@ main{
     color: var(--branco);
     font-size: 25px;
     font-weight: 600;
+    font-family: "Comfortaa";
 }
 
 .botao-redirecionamento{

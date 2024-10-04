@@ -1,3 +1,8 @@
+document.getElementById("botaoVoltar").addEventListener("click",
+    function () {
+        history.back();
+});
+
 document.addEventListener('DOMContentLoaded', async function () {
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -33,7 +38,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                     </div>
 
                     <div id="listaRespostas" class="lista-respostas">
-                        <h3>Comentários</h3>
+                        <h3 class="h3-comentarios">Comentários</h3>
+                        <div class="comentarios">
+                            
+                        </div>
                     </div>
                 `;
 
@@ -51,26 +59,21 @@ document.addEventListener('DOMContentLoaded', async function () {
     const result = await response.json();
 
     if (result.success) {
-        const commentsList = document.querySelector('.lista-respostas')
+        const commentsList = document.querySelector('.comentarios')
         result.data.forEach(comments => {
-            const cardPost = document.createElement('div');
-            cardPost.className = 'post';
+            const cardComment = document.createElement('div');
+            cardComment.className = 'comentario';
 
-            const userName = document.createElement('h3');
+            const userName = document.createElement('h2');
             userName.textContent = comments.nome;
 
-            const userText = document.createElement('div');
-            userText.className = 'user-text';
-
             const postDescription = document.createElement('p');
-            postDescription.textContent = posts.conteudo
+            postDescription.textContent = comments.content
 
-            userText.appendChild(postDescription);
+            cardComment.appendChild(userName);
+            cardComment.appendChild(postDescription);
 
-            cardPost.appendChild(userName);
-            cardPost.appendChild(userText);
-
-            card.appendChild(cardPost);
+            commentsList.appendChild(cardComment);
 
         })
     } else {
@@ -81,13 +84,20 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 async function publicar(e){
     e.preventDefault(); 
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get("id");
 
+    console.log(postId)
+    //modificar tabela de comentários
+    //inserir id do post junto ao insert no comentário
     let comentario = document.getElementById("inputResposta").value;
     let usuario = localStorage.getItem("dados_usuario");
 
     let id_usuario = JSON.parse(usuario).id
+    let id_post = parseInt(postId)
 
-    let dados = {id_usuario, comentario}
+    let dados = {id_usuario, comentario, id_post}
+    console.log(dados)
     const response = await fetch('http://localhost:3000/api/store/comment', {
         method: "POST",
         headers: {"Content-type": "application/json;charset=UTF-8"},
@@ -101,6 +111,9 @@ async function publicar(e){
     } else {
         alert("Post não enviado!")
         console.log(content.sql);
+    }
+    module.exports = {
+        id_post
     }
 }
 

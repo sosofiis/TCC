@@ -46,7 +46,7 @@ body{
 .user-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     margin: 10px;
 }
 
@@ -80,35 +80,21 @@ body{
 .user-text p {
     margin: 5px 0 0 0;
     color: #333;
+    font-size: 22px;
 }
 
 h3{
-    font-size: 21px;
+    font-size: 24px;
 }
 
 h4{
-    font-size: 18px;
-}
-
-.user-interactions{
-    display: flex;
-    gap: 10px;
-    margin-top: 5px;
-}
-
-.button-interactions{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .section-button-post{
     display: flex;
     justify-content:end;
-    margin: 20px;
 }
 
 .button-post{
@@ -119,6 +105,9 @@ h4{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     background-color: var(--lilas);
     cursor: pointer;
+    position: fixed; /* Torna o botão fixo na tela */
+    bottom: 20px;    /* Distância do fundo da tela */
+    right: 20px;     /* Distância do lado direito da tela */
 }
 
 #icon-add{
