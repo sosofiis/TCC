@@ -1,6 +1,5 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
-const id_post = require("../../../front/posts/postsDetalhes.js")
 
 async function storeComment(request, response) {
     const params = Array(
@@ -34,6 +33,8 @@ async function storeComment(request, response) {
 }
 
 async function getComment(request, response) {
+
+    const id_post = request.params.id_post;
     //filtrar também com id do post
     const query = `
     SELECT fj_users.nome, comments.* 

@@ -64,11 +64,23 @@ main{
     padding-bottom: 10px;
 }
 
+.user-informations{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 h3{
     font-size: 28px;
 }
 
+.botao-tres-pontos{
+    background-color: transparent;
+}
 
+#tres-pontos{
+    font-size: 28px;
+}
 
 h4{
     font-size: 24px;

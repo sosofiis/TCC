@@ -4,7 +4,7 @@ const { storeComment, getComment } = require('../controller/commentsController')
 
 /**
  * @swagger
- * /store/comment
+ * /store/comment:
  *  store:
  *      summary: Guarda o comentário feito
  *      responses:
@@ -21,7 +21,7 @@ router.post('/store/comment', storeComment);
 
 /**
  * @swagger
- * /get/comment
+ * /get/comment:
  *  store:
  *      summary: Busca os comentários registrados no banco
  *      responses:
@@ -34,6 +34,6 @@ router.post('/store/comment', storeComment);
  *                          items:
  *                              type: object
  */
-router.get('/get/comment', getComment)
+router.get('/get/comment/:id_post', getComment)
 
 module.exports = router;

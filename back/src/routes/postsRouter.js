@@ -1,11 +1,11 @@
 const router = require('express').Router();
 // const upload = require('../config/multer');
 
-const {storePost, getPost, getPostById} = require('../controller/postsController')
+const {storePost, getPost, getPostById, deletePostById} = require('../controller/postsController')
 
 /**
  * @swagger
- * /store/post
+ * /store/post:
  *  store:
  *      summary: Guarda o post feito
  *      responses:
@@ -22,7 +22,7 @@ router.post('/store/post', storePost);
 
 /**
  * @swagger
- * /get/post
+ * /get/post:
  *  store:
  *      summary: Busca os posts registrados no banco
  *      responses:
@@ -39,7 +39,7 @@ router.get('/get/post', getPost)
 
 /**
  * @swagger
- * /get/post/detalhes/:id
+ * /get/post/detalhes/:id:
  *  store:
  *      summary: Busca os post feito no banco e mostra seus detalhes a partir do ID dele
  *      responses:
@@ -54,4 +54,5 @@ router.get('/get/post', getPost)
  */
 router.get('/get/post/detalhes/:id', getPostById)
 
+router.delete('/delete/post/:id', deletePostById)
 module.exports = router;

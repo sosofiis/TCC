@@ -33,7 +33,7 @@ async function storePost(request, response) {
 }
 
 async function getPost(request, response) {
-    const query = "SELECT fj_users.nome, posts.* FROM fj_users, posts WHERE posts.id_usuario = fj_users.id";
+    const query = "SELECT fj_users.nome, posts.* FROM fj_users, posts WHERE posts.id_usuario = fj_users.id ORDER BY posts.created_at DESC";
 
     connection.query(query, (err, results) => {
         if(results) {
@@ -81,9 +81,51 @@ async function getPostById(request, response) {
         }
     })
 }
+async function deletePostById(request, response) {
+    const postId = request.params.id;
+
+    // Excluir os comentários primeiro
+    const deleteCommentsQuery = "DELETE FROM comments WHERE id_post = ?;";
+    connection.query(deleteCommentsQuery, [postId], (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: 'Erro ao deletar os comentários',
+                sql: err
+            });
+        }
+
+        // Agora excluir o post
+        const deletePostQuery = "DELETE FROM posts WHERE id = ?;";
+        connection.query(deletePostQuery, [postId], (err, results) => {
+            if (err) {
+                return response.status(500).json({
+                    success: false,
+                    message: 'Erro ao deletar o post',
+                    sql: err
+                });
+            }
+
+            if (results.affectedRows > 0) {
+                response.status(200).json({
+                    success: true,
+                    message: "Post e comentários deletados com sucesso!"
+                });
+            } else {
+                response.status(404).json({
+                    success: false,
+                    message: 'Post não encontrado!'
+                });
+            }
+        });
+    });
+}
+
+
 
 module.exports = {
     storePost,
     getPost,
-    getPostById
+    getPostById,
+    deletePostById
 }

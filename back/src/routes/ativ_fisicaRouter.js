@@ -5,7 +5,7 @@ const { storeAtiv_fisica, getAtiv_fisica, deleteAtiv_fisica } = require('../cont
 
 /**
  * @swagger
- * /store/ativ_fisica
+ * /store/ativ_fisica:
  *  store:
  *      summary: Guarda as atividades físicas registradas
  *      responses:
@@ -22,7 +22,7 @@ router.post('/store/ativ_fisica', storeAtiv_fisica);
 
 /**
  * @swagger
- * /get/ativ_fisica
+ * /get/ativ_fisica:
  *  store:
  *      summary: Busca as atividades físicas registradas no banco
  *      responses:
@@ -39,7 +39,7 @@ router.post('/get/ativ_fisica', getAtiv_fisica);
 
 /**
  * @swagger
- * /delete/ativ_fisica
+ * /delete/ativ_fisica:
  *  store:
  *      summary: Deleta as atividades físicas registradas
  *      responses:

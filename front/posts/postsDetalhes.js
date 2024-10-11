@@ -1,7 +1,8 @@
 document.getElementById("botaoVoltar").addEventListener("click",
     function () {
         history.back();
-});
+    }
+);
 
 document.addEventListener('DOMContentLoaded', async function () {
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,7 +18,16 @@ document.addEventListener('DOMContentLoaded', async function () {
                     detalhesMain.innerHTML =
                         `
                     <div class="user-name">
-                        <h3>${data.data.nome}</h3>
+                        <div class="user-informations">
+                            <h3>${data.data.nome}</h3>
+                            <button class="botao-tres-pontos" id="botaoDeletar">
+                                <span class="material-symbols-outlined" id="tres-pontos">
+                                    more_horiz
+                                </span>
+                            </button>
+                            
+                        </div>
+                        
                     </div>
                     
                     <div class="post">
@@ -45,6 +55,29 @@ document.addEventListener('DOMContentLoaded', async function () {
                     </div>
                 `;
 
+                    const botaoDeletar = document.getElementById('botaoDeletar');
+                    botaoDeletar.addEventListener('click', function () {
+                        var confirmacao = confirm("Você deseja deletar este post?");
+                        if (confirmacao) {
+                            fetch(`http://localhost:3000/api/delete/post/${postId}`, {
+                                method: 'DELETE'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('Post deletado com sucesso!');
+                                    window.location.href = './forum.html'; // Redireciona para outra página após deletar
+                                } else {
+                                    alert('Erro ao deletar o post: ' + data.message);
+                                }
+                            })
+                            .catch(error => console.error('Erro ao deletar o post:', error));
+                        } else {
+                            alert("Você cancelou a operação de deletar");
+                        }
+                    });
+                    
+
                     // Adiciona o event listener para o botão após o HTML ser carregado
                     const form = document.getElementById('formRespostas');
                     form.addEventListener('submit', publicar);
@@ -55,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
     }
 
-    const response = await fetch('http://localhost:3000/api/get/comment');
+    const response = await fetch(`http://localhost:3000/api/get/comment/${postId}`);
     const result = await response.json();
 
     if (result.success) {
@@ -82,8 +115,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 });
 
-async function publicar(e){
-    e.preventDefault(); 
+async function publicar(e) {
+    e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get("id");
 
@@ -96,24 +129,22 @@ async function publicar(e){
     let id_usuario = JSON.parse(usuario).id
     let id_post = parseInt(postId)
 
-    let dados = {id_usuario, comentario, id_post}
+    let dados = { id_usuario, comentario, id_post }
     console.log(dados)
     const response = await fetch('http://localhost:3000/api/store/comment', {
         method: "POST",
-        headers: {"Content-type": "application/json;charset=UTF-8"},
+        headers: { "Content-type": "application/json;charset=UTF-8" },
         body: JSON.stringify(dados)
     })
 
     let content = await response.json();
 
-    if(content.success) {
+    if (content.success) {
         alert("Sucesso!")
+        window.location.reload(true);
     } else {
         alert("Post não enviado!")
         console.log(content.sql);
     }
-    module.exports = {
-        id_post
-    }
-}
 
+}

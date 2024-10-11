@@ -5,7 +5,7 @@ const { storeSono, getSono, deleteSono } = require('../controller/sonoController
 
 /**
  * @swagger
- * /store/sono
+ * /store/sono:
  *  store:
  *      summary: Guarda a noite de sono registrada
  *      responses:
@@ -22,7 +22,7 @@ router.post('/store/sono', storeSono);
 
 /**
  * @swagger
- * /get/humor
+ * /get/humor:
  *  store:
  *      summary: Busca as noites de sono registradas no banco
  *      responses:
@@ -39,7 +39,7 @@ router.post('/get/sono', getSono);
 
 /**
  * @swagger
- * /delete/sono
+ * /delete/sono:
  *  store:
  *      summary: Deleta as noites de sono registradas
  *      responses:

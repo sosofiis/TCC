@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             const userName = document.createElement('h3');
             userName.textContent = posts.nome;
 
+            // const deletePost = document.createElement('span');
+            // // deletePost.textContent = more_horiz;
+            // deletePost.className = 'material-symbols-outlined'
+
             const userText = document.createElement('div');
             userText.className = 'user-text';
 

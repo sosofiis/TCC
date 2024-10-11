@@ -5,7 +5,7 @@ const { storeTratamento, getTratamento, deleteTratamento } = require('../control
 
 /**
  * @swagger
- * /store/tratamento
+ * /store/tratamento:
  *  store:
  *      summary: Guarda o tratamento registrado
  *      responses:
@@ -22,7 +22,7 @@ router.post('/store/tratamento', storeTratamento);
 
 /**
  * @swagger
- * /get/tratamento
+ * /get/tratamento:
  *  store:
  *      summary: Busca os tratamentos registrados no banco
  *      responses:
@@ -39,7 +39,7 @@ router.post('/get/tratamento', getTratamento);
 
 /**
  * @swagger
- * /delete/tratamento
+ * /delete/tratamento:
  *  store:
  *      summary: Deleta os tratamentos registrados
  *      responses:
