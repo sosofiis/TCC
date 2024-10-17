@@ -81,6 +81,7 @@ async function getPostById(request, response) {
         }
     })
 }
+
 async function deletePostById(request, response) {
     const postId = request.params.id;
 

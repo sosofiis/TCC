@@ -33,7 +33,6 @@ async function storeComment(request, response) {
 }
 
 async function getComment(request, response) {
-
     const id_post = request.params.id_post;
     //filtrar também com id do post
     const query = `
@@ -64,7 +63,36 @@ async function getComment(request, response) {
     });
 }
 
+async function deleteCommentById(request, response) {
+    const commentId = request.params.id;
+
+        // Agora excluir o post
+        const deleteCommentQuery = "DELETE FROM comments WHERE id = ?;";
+        connection.query(deleteCommentQuery, [commentId], (err, results) => {
+            if (err) {
+                return response.status(500).json({
+                    success: false,
+                    message: 'Erro ao deletar o comentário',
+                    sql: err
+                });
+            }
+
+            if (results.affectedRows > 0) {
+                response.status(200).json({
+                    success: true,
+                    message: "Comentário deletado com sucesso!"
+                });
+            } else {
+                response.status(404).json({
+                    success: false,
+                    message: 'Comentário não encontrado!'
+                });
+            }
+        });
+};
+
 module.exports = {
     storeComment,
-    getComment
+    getComment,
+    deleteCommentById
 }

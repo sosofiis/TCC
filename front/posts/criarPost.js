@@ -1,7 +1,7 @@
 document.getElementById("botaoVoltar").addEventListener("click",
     function () {
         history.back();
-    });
+ });
 
 async function enviar(event) {
     event.preventDefault();
@@ -11,9 +11,9 @@ async function enviar(event) {
     let id_usuario = JSON.parse(usuario).id
     let title = document.getElementById("title").value;
     let conteudo = document.getElementById("conteudo").value;
-    let imagem = document.getElementById("imagem").value;
 
-    let dados = {id_usuario, title, conteudo, imagem}
+
+    let dados = {id_usuario, title, conteudo}
     const response = await fetch('http://localhost:3000/api/store/post', {
         method: "POST",
         headers: {"Content-type": "application/json;charset=UTF-8"},

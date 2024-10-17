@@ -54,5 +54,21 @@ router.get('/get/post', getPost)
  */
 router.get('/get/post/detalhes/:id', getPostById)
 
+/**
+ * @swagger
+ * /delete/post/:id:
+ *  store:
+ *      summary: Deleta o post a partir de seu id
+ *      responses:
+ *          200:
+ *              description: Deleta o post com sucesso
+ *              content: 
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              type: object
+ */
 router.delete('/delete/post/:id', deletePostById)
+
 module.exports = router;

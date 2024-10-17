@@ -62,21 +62,21 @@ document.addEventListener('DOMContentLoaded', async function () {
                             fetch(`http://localhost:3000/api/delete/post/${postId}`, {
                                 method: 'DELETE'
                             })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    alert('Post deletado com sucesso!');
-                                    window.location.href = './forum.html'; // Redireciona para outra página após deletar
-                                } else {
-                                    alert('Erro ao deletar o post: ' + data.message);
-                                }
-                            })
-                            .catch(error => console.error('Erro ao deletar o post:', error));
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        alert('Post deletado com sucesso!');
+                                        window.location.href = './forum.html'; // Redireciona para outra página após deletar
+                                    } else {
+                                        alert('Erro ao deletar o post: ' + data.message);
+                                    }
+                                })
+                                .catch(error => console.error('Erro ao deletar o post:', error));
                         } else {
                             alert("Você cancelou a operação de deletar");
                         }
                     });
-                    
+
 
                     // Adiciona o event listener para o botão após o HTML ser carregado
                     const form = document.getElementById('formRespostas');
@@ -97,17 +97,64 @@ document.addEventListener('DOMContentLoaded', async function () {
             const cardComment = document.createElement('div');
             cardComment.className = 'comentario';
 
+            const cardNomeDelete = document.createElement('div');
+            cardNomeDelete.className = 'user-informations';
+
+            const buttonDelete = document.createElement('button');
+            buttonDelete.className = 'botao-tres-pontos';
+            buttonDelete.id = 'botaoDeletarComentario'
+
+            const iconDelete = document.createElement('span');
+            iconDelete.classList.add('material-symbols-outlined');
+            iconDelete.textContent = 'more_horiz'
+
             const userName = document.createElement('h2');
             userName.textContent = comments.nome;
+
+            const cardDescription = document.createElement('div');
 
             const postDescription = document.createElement('p');
             postDescription.textContent = comments.content
 
-            cardComment.appendChild(userName);
-            cardComment.appendChild(postDescription);
+            cardDescription.appendChild(postDescription);
+
+            buttonDelete.appendChild(iconDelete);
+
+            cardNomeDelete.appendChild(userName);
+            cardNomeDelete.appendChild(buttonDelete);
+
+
+            cardComment.appendChild(cardNomeDelete);
+            cardComment.appendChild(cardDescription);
 
             commentsList.appendChild(cardComment);
 
+            const urlParams = new URLSearchParams(window.location.search);
+
+            //acho que aqui é o problema
+            const commentId = urlParams.get("commentId");
+
+            const botaoDeletarComentario = document.getElementById('botaoDeletarComentario');
+            botaoDeletarComentario.addEventListener('click', function () {
+                var confirmacao = confirm("Você deseja deletar este comentário?");
+                if (confirmacao) {
+                    fetch(`http://localhost:3000/api/delete/comment/${commentId}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Comentário deletado com sucesso!');
+                                window.location.href = './forum.html'; // Redireciona para outra página após deletar
+                            } else {
+                                alert('Erro ao deletar o comentário: ' + data.message);
+                            }
+                        })
+                        .catch(error => console.error('Erro ao deletar o comentário:', error));
+                } else {
+                    alert("Você cancelou a operação de deletar");
+                }
+            });
         })
     } else {
         console.log('Erro', result.sql);

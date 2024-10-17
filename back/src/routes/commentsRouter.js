@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { storeComment, getComment } = require('../controller/commentsController');
+const { storeComment, getComment, deleteCommentById } = require('../controller/commentsController');
 
 /**
  * @swagger
@@ -35,5 +35,7 @@ router.post('/store/comment', storeComment);
  *                              type: object
  */
 router.get('/get/comment/:id_post', getComment)
+
+router.delete('/delete/comment/:id', deleteCommentById)
 
 module.exports = router;
