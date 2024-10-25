@@ -149,3 +149,12 @@ li.active{
 .days li.active::before{
     background: var(--roxo);
 }
+
+/* -------------------RESPONSIVO------------------- */
+
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .calendar-div {
+        margin-top: 30%;
+    }
+}

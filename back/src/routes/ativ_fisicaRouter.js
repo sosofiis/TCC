@@ -6,24 +6,24 @@ const { storeAtiv_fisica, getAtiv_fisica, deleteAtiv_fisica } = require('../cont
 /**
  * @swagger
  * /store/ativ_fisica:
- *  store:
- *      summary: Guarda as atividades físicas registradas
- *      responses:
- *          200:
- *              description: Registrou as atividades físicas com sucesso
- *              content: 
- *                  application/json:
- *                      schema:
- *                          type: array
- *                          items:
- *                              type: object
+ *   post:
+ *     summary: Guarda as atividades físicas registradas
+ *     responses:
+ *       200:
+ *         description: Registrou as atividades físicas com sucesso
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
  */
 router.post('/store/ativ_fisica', storeAtiv_fisica);
 
 /**
  * @swagger
  * /get/ativ_fisica:
- *  store:
+ *  post:
  *      summary: Busca as atividades físicas registradas no banco
  *      responses:
  *          200:
@@ -40,7 +40,7 @@ router.post('/get/ativ_fisica', getAtiv_fisica);
 /**
  * @swagger
  * /delete/ativ_fisica:
- *  store:
+ *  post:
  *      summary: Deleta as atividades físicas registradas
  *      responses:
  *          200:

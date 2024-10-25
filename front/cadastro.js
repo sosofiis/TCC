@@ -1,7 +1,7 @@
 let botaoCadastro = document.querySelector("#cadastro");
 
 botaoCadastro.addEventListener("click", async function() {
-    // alert("teste");
+    // Obtém os valores inseridos nos campos de nome, e-mail, senha e confirmação de senha.
     const nome = document.querySelector("#nome").value;
     const email = document.querySelector("#email").value;
     const senha = document.querySelector("#senha").value;
@@ -19,7 +19,7 @@ botaoCadastro.addEventListener("click", async function() {
         let content = await response.json();
 
         if(content.sucess) {
-            localStorage.setItem('dados_usuario', JSON.stringify(result.data))
+            localStorage.setItem('dados_usuario', JSON.stringify(content.data))
             window.location.href = './home.html';
         } else {
             alert("Usuário não cadastrado.");

@@ -6,17 +6,36 @@ document.getElementById("botaoVoltar").addEventListener("click",
 
 const textoData = document.querySelector(".texto-regst");
 
-let dia = localStorage.getItem('dia');
-let mes = localStorage.getItem('mes');
-let ano = localStorage.getItem('ano');
+
+let dia, mes, ano
+
+if (localStorage.getItem('registroDireto') == 'True') {
+    const dataAtual = new Date();
+
+    dia = dataAtual.getDate()
+    mes = dataAtual.getMonth()
+    ano = dataAtual.getFullYear()
+
+    localStorage.setItem("registroDireto", "False")
+}else{
+    dia = localStorage.getItem('dia');
+    mes = localStorage.getItem('mes');
+    ano = localStorage.getItem('ano');
+
+
+}
+
 
 const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 textoData.innerHTML = `${dia} de ${months[mes]} de ${ano}`
 
 window.onload = async function () {
+
     let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd');
     let dados = { data }
+
+    console.log(dados)
 
     let response = await fetch('http://localhost:3000/api/get/humor', {
         method: "POST",

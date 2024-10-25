@@ -1,5 +1,6 @@
 document.getElementById("botaoRed1").addEventListener("click",
     function () {
+        localStorage.setItem("registroDireto", 'True');
         window.location.href = './index.html';
     });
 

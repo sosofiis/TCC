@@ -1,7 +1,7 @@
 document.getElementById("botaoVoltar").addEventListener("click",
     function () {
         history.back();
- });
+});
 
 async function enviar(event) {
     event.preventDefault();
@@ -24,6 +24,7 @@ async function enviar(event) {
 
     if(content.success) {
         alert("Sucesso!")
+        window.location.reload(true);
     } else {
         alert("Post não enviado!")
         console.log(content.sql);

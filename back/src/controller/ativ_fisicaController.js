@@ -1,6 +1,7 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
+// insere a atividade física na tabela
 async function storeAtiv_fisica(request, response) {
     const params = Array(
         request.body.data,
@@ -32,6 +33,7 @@ async function storeAtiv_fisica(request, response) {
     })
 }
 
+// seleciona a atividade física a partir da data q foi registrada
 async function getAtiv_fisica(request, response) {
     const params = Array(
         request.body.data
@@ -63,6 +65,7 @@ async function getAtiv_fisica(request, response) {
 
 }
 
+// deleta a atividade física
 async function deleteAtiv_fisica(request, response) {
     const params = Array(
         request.body.data, 

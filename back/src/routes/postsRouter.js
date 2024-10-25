@@ -6,7 +6,7 @@ const {storePost, getPost, getPostById, deletePostById} = require('../controller
 /**
  * @swagger
  * /store/post:
- *  store:
+ *  post:
  *      summary: Guarda o post feito
  *      responses:
  *          200:
@@ -23,7 +23,7 @@ router.post('/store/post', storePost);
 /**
  * @swagger
  * /get/post:
- *  store:
+ *  get:
  *      summary: Busca os posts registrados no banco
  *      responses:
  *          200:
@@ -40,7 +40,7 @@ router.get('/get/post', getPost)
 /**
  * @swagger
  * /get/post/detalhes/:id:
- *  store:
+ *  get:
  *      summary: Busca os post feito no banco e mostra seus detalhes a partir do ID dele
  *      responses:
  *          200:
@@ -57,7 +57,7 @@ router.get('/get/post/detalhes/:id', getPostById)
 /**
  * @swagger
  * /delete/post/:id:
- *  store:
+ *  delete:
  *      summary: Deleta o post a partir de seu id
  *      responses:
  *          200:

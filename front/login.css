@@ -104,3 +104,41 @@ a{
     padding-top: 2%;
     text-shadow: black 0.1em 0.1em 0.4em
 }
+
+/* -------------------RESPONSIVO------------------- */
+
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .container-header{
+        padding-top: 20%;
+    }
+
+    .imagem-logo{
+        height: 19vh;
+        width: 67vw;
+    }
+
+    .container-main{
+        padding-top: 13%;
+    }
+
+    input{
+        width: 80vw;
+        height: 4vh;
+        font-size: 20px;
+    }
+
+    input::placeholder{
+        font-size: 20px;
+    }
+
+    button{
+        width: 65vw;
+        height: 5vh;
+        font-size: 20px;
+    }
+
+    a{
+        font-size: 18px;
+    }
+}

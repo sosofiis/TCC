@@ -1,6 +1,7 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
+// registra o comentário na tabela
 async function storeComment(request, response) {
     const params = Array(
         //request id post
@@ -34,7 +35,7 @@ async function storeComment(request, response) {
 
 async function getComment(request, response) {
     const id_post = request.params.id_post;
-    //filtrar também com id do post
+
     const query = `
     SELECT fj_users.nome, comments.* 
     FROM comments

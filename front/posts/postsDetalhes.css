@@ -116,6 +116,7 @@ input{
     background-color: transparent;
     border: none;
     border-bottom: 1px solid rgba(0,0,0,0.50);
+    font-size: 20px;
 }
 
 input::placeholder{
@@ -148,4 +149,14 @@ button{
     padding: 15px;
     background-color: #D4BFFF;
     border-radius: 10px;
+}
+
+/* -------------------RESPONSIVO------------------- */
+
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    #enviarResposta{
+        width: 25vw;
+        font-size: 25px;
+    }
 }

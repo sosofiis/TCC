@@ -7,7 +7,7 @@ const { storeSintomas, getSintomas, deleteSintomas } = require('../controller/si
 /**
  * @swagger
  * /store/sintomas:
- *  store:
+ *  post:
  *      summary: Guarda os sintomas registrados
  *      responses:
  *          200:
@@ -24,7 +24,7 @@ router.post('/store/sintomas', storeSintomas);
 /**
  * @swagger
  * /get/sintomas:
- *  store:
+ *  post:
  *      summary: Busca os sintomas registrados no banco
  *      responses:
  *          200:
@@ -41,7 +41,7 @@ router.post('/get/sintomas', getSintomas);
 /**
  * @swagger
  * /delete/sintomas:
- *  store:
+ *  post:
  *      summary: Deleta os sintomas registrados
  *      responses:
  *          200:

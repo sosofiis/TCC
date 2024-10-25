@@ -6,7 +6,7 @@ const { storeHumor, getHumor, deleteHumor } = require('../controller/humorContro
 /**
  * @swagger
  * /store/humor:
- *  store:
+ *  post:
  *      summary: Guarda os humores registrados
  *      responses:
  *          200:
@@ -23,7 +23,7 @@ router.post('/store/humor', storeHumor);
 /**
  * @swagger
  * /get/humor:
- *  store:
+ *  post:
  *      summary: Busca os humores registrados no banco
  *      responses:
  *          200:
@@ -40,7 +40,7 @@ router.post('/get/humor', getHumor);
 /**
  * @swagger
  * /delete/humor:
- *  store:
+ *  post:
  *      summary: Deleta os humores registrados
  *      responses:
  *          200:

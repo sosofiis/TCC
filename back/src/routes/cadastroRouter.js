@@ -6,7 +6,7 @@ const { createUser } = require('../controller/cadastroController');
 /**
  * @swagger
  * /create/user:
- *  store:
+ *  post:
  *      summary: Cria um usuário no banco de dados
  *      responses:
  *          200:

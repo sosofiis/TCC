@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const postId = urlParams.get("id");
 
+    // Se houver um id de post na URL, faz uma requisição para obter os detalhes do post.
     if (postId) {
         fetch(`http://localhost:3000/api/get/post/detalhes/${postId}`)
             .then(response => response.json())
@@ -88,6 +89,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
     }
 
+    // Requisição para buscar os comentários relacionados ao post atual.
     const response = await fetch(`http://localhost:3000/api/get/comment/${postId}`);
     const result = await response.json();
 
@@ -102,8 +104,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             const buttonDelete = document.createElement('button');
             buttonDelete.className = 'botao-tres-pontos';
-            buttonDelete.id = 'botaoDeletarComentario'
-
+            
             const iconDelete = document.createElement('span');
             iconDelete.classList.add('material-symbols-outlined');
             iconDelete.textContent = 'more_horiz'
@@ -132,10 +133,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             const urlParams = new URLSearchParams(window.location.search);
 
             //acho que aqui é o problema
-            const commentId = urlParams.get("commentId");
+            const commentId = comments.id
 
-            const botaoDeletarComentario = document.getElementById('botaoDeletarComentario');
-            botaoDeletarComentario.addEventListener('click', function () {
+           
+            buttonDelete.addEventListener('click', function () {
                 var confirmacao = confirm("Você deseja deletar este comentário?");
                 if (confirmacao) {
                     fetch(`http://localhost:3000/api/delete/comment/${commentId}`, {
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         .then(data => {
                             if (data.success) {
                                 alert('Comentário deletado com sucesso!');
-                                window.location.href = './forum.html'; // Redireciona para outra página após deletar
+                                window.location.reload(true);
                             } else {
                                 alert('Erro ao deletar o comentário: ' + data.message);
                             }
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 async function publicar(e) {
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get("id");
+    const postId = urlParams.get("id"); // Obtém o id do post da URL.
 
     console.log(postId)
     //modificar tabela de comentários

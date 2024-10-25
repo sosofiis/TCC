@@ -5,7 +5,7 @@ const { loginUser } = require('../controller/loginController')
 /**
  * @swagger
  * /login:
- *  store:
+ *  post:
  *      summary: Busca um usuário já existente no banco a partir do e-mail
  *      responses:
  *          200:

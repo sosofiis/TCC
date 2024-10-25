@@ -108,8 +108,22 @@ h4{
     position: fixed; /* Torna o botão fixo na tela */
     bottom: 20px;    /* Distância do fundo da tela */
     right: 20px;     /* Distância do lado direito da tela */
+    align-items: center;
 }
 
 #icon-add{
     font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+/* -------------------RESPONSIVO------------------- */
+
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .button-post{
+        width: 11vw;
+    }
+}
+  
