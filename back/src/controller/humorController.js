@@ -2,13 +2,13 @@ const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
 async function storeHumor(request, response) {
+
     const params = Array(
+        request.body.iduser,
         request.body.data,
         request.body.humor
     );
-    
-    console.log(params);
-    const query = "INSERT INTO humor(user_id, data, humor) VALUES(1, ?, ?)";
+        const query = "INSERT INTO humor(user_id, data, humor) VALUES(?, ?, ?)";
 
     connection.query(query, params, (err, results) => {
         if (results) { 
@@ -34,11 +34,12 @@ async function storeHumor(request, response) {
 
 async function getHumor(request, response) {
     const params = Array(
+        request.body.user_id,
         request.body.data
     );
 
     console.log(params);
-    const query = "SELECT * from humor where data = ?";
+    const query = "SELECT * from humor where user_id = ?, data = ?";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

@@ -3,12 +3,13 @@ const dotenv = require('dotenv').config();
 
 async function storeTratamento(request, response) {
     const params = Array(
+        request.body.iduser,
         request.body.data,
         request.body.tratamento
     );
     
     console.log(params);
-    const query = "INSERT INTO tratamento(user_id, data, tratamento) VALUES(1, ?, ?)";
+    const query = "INSERT INTO tratamento(user_id, data, tratamento) VALUES(?, ?, ?)";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

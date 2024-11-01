@@ -3,12 +3,13 @@ const dotenv = require('dotenv').config();
 
 async function storeSintomas(request, response) {
     const params = Array(
+        request.body.iduser,
         request.body.data,
         request.body.sintomas
     );
     
     console.log(params);
-    const query = "INSERT INTO sintomas(user_id, data, sintomas) VALUES(1, ?, ?)";
+    const query = "INSERT INTO sintomas(user_id, data, sintomas) VALUES(?, ?, ?)";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

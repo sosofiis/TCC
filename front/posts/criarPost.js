@@ -24,7 +24,7 @@ async function enviar(event) {
 
     if(content.success) {
         alert("Sucesso!")
-        window.location.reload(true);
+        window.location.href = './forum.html';
     } else {
         alert("Post não enviado!")
         console.log(content.sql);

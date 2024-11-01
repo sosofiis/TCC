@@ -3,12 +3,13 @@ const dotenv = require('dotenv').config();
 
 async function storeSono(request, response) {
     const params = Array(
+        request.body.iduser,
         request.body.data,
         request.body.sono
     );
     
     console.log(params);
-    const query = "INSERT INTO sono(user_id, data, sono) VALUES(1, ?, ?)";
+    const query = "INSERT INTO sono(user_id, data, sono) VALUES(?, ?, ?)";
 
     connection.query(query, params, (err, results) => {
         if (results) { 
