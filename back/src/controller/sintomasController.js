@@ -35,11 +35,12 @@ async function storeSintomas(request, response) {
 
 async function getSintomas(request, response) {
     const params = Array(
+        request.body.user_id,
         request.body.data
     );
 
     console.log(params);
-    const query = "SELECT * from sintomas where data = ?";
+    const query = "SELECT * from sintomas where user_id = ? AND data = ?";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

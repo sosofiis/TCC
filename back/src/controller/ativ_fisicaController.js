@@ -37,11 +37,12 @@ async function storeAtiv_fisica(request, response) {
 // seleciona a atividade física a partir da data q foi registrada
 async function getAtiv_fisica(request, response) {
     const params = Array(
+        request.body.user_id,
         request.body.data
     );
 
     console.log(params);
-    const query = "SELECT * from ativ_fisica where data = ?";
+    const query = "SELECT * from ativ_fisica where user_id = ? AND data = ?";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

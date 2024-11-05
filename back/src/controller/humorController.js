@@ -39,7 +39,7 @@ async function getHumor(request, response) {
     );
 
     console.log(params);
-    const query = "SELECT * from humor where user_id = ?, data = ?";
+    const query = "SELECT * from humor where user_id = ? AND data = ?";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

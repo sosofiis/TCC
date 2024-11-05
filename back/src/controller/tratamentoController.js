@@ -35,11 +35,12 @@ async function storeTratamento(request, response) {
 
 async function getTratamento(request, response) {
     const params = Array(
+        request.body.user_id,
         request.body.data
     );
 
     console.log(params);
-    const query = "SELECT * from tratamento where data = ?";
+    const query = "SELECT * from tratamento where user_id = ? AND data = ?";
 
     connection.query(query, params, (err, results) => {
         if (results) { 

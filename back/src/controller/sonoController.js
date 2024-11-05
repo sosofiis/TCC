@@ -35,11 +35,12 @@ async function storeSono(request, response) {
 
 async function getSono(request, response) {
     const params = Array(
+        request.body.user_id,
         request.body.data
     );
 
     console.log(params);
-    const query = "SELECT * from sono where data = ?";
+    const query = "SELECT * from sono where user_id = ? AND data = ?";
 
     connection.query(query, params, (err, results) => {
         if (results) { 
