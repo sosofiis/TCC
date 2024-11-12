@@ -6,7 +6,6 @@ document.getElementById("botaoVoltar").addEventListener("click",
 
 const textoData = document.querySelector(".texto-regst");
 
-
 let dia, mes, ano
 
 if (localStorage.getItem('registroDireto') == 'True') {
@@ -17,12 +16,10 @@ if (localStorage.getItem('registroDireto') == 'True') {
     ano = dataAtual.getFullYear()
 
     localStorage.setItem("registroDireto", "False")
-}else{
+} else {
     dia = localStorage.getItem('dia');
     mes = localStorage.getItem('mes');
     ano = localStorage.getItem('ano');
-
-
 }
 
 
@@ -35,8 +32,9 @@ window.onload = async function () {
     let dados_usuario = JSON.parse(localStorage.getItem('dados_usuario'))
     let user_id = dados_usuario.id
     let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd');
-    let dados = { data , user_id}
+    let dados = { data, user_id }
 
+    //Humor
     let response = await fetch('http://localhost:3000/api/get/humor', {
         method: "POST",
         headers: { "Content-type": "application/json;charset=UTF-8" },
@@ -46,7 +44,7 @@ window.onload = async function () {
     let content = await response.json();
 
     if (content.sucess) {
-        
+
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
             const id = element.humor
@@ -57,31 +55,33 @@ window.onload = async function () {
             minhaDiv.classList.add("bg-clicked");
         }
     } else {
-        
+
     }
 
+    //Sintomas
     response = await fetch('http://localhost:3000/api/get/sintomas', {
         method: "POST",
-        headers: { "Content-type": "application/json;charset=UTF-8" },
+        headers: { "Content-type": "application/json" },
         body: JSON.stringify(dados)
     });
 
     content = await response.json();
+    console.log(response);
 
     if (content.sucess) {
-        
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
             const id = element.sintomas
-
+            console.log(element);
             const minhaDiv = document.getElementById(id);
 
             minhaDiv.classList.remove("bg-unclicked");
             minhaDiv.classList.add("bg-clicked");
         }
     } else {
-        
+        console.log('ta chegano aqui');
     }
+
     // Atividade Fisica
     response = await fetch('http://localhost:3000/api/get/ativ_fisica', {
         method: "POST",
@@ -92,7 +92,7 @@ window.onload = async function () {
     content = await response.json();
 
     if (content.sucess) {
-        
+
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
             const id = element.ativ
@@ -103,9 +103,10 @@ window.onload = async function () {
             minhaDiv.classList.add("bg-clicked");
         }
     } else {
-        
+
     }
 
+    //Tratamento
     response = await fetch('http://localhost:3000/api/get/tratamento', {
         method: "POST",
         headers: { "Content-type": "application/json;charset=UTF-8" },
@@ -115,7 +116,7 @@ window.onload = async function () {
     content = await response.json();
 
     if (content.sucess) {
-        
+
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
             const id = element.tratamento
@@ -126,9 +127,10 @@ window.onload = async function () {
             minhaDiv.classList.add("bg-clicked");
         }
     } else {
-        
+
     }
 
+    //Sono
     response = await fetch('http://localhost:3000/api/get/sono', {
         method: "POST",
         headers: { "Content-type": "application/json;charset=UTF-8" },
@@ -138,7 +140,7 @@ window.onload = async function () {
     content = await response.json();
 
     if (content.sucess) {
-        
+
         for (let index = 0; index < content.data.length; index++) {
             const element = content.data[index];
             const id = element.sono
@@ -149,7 +151,7 @@ window.onload = async function () {
             minhaDiv.classList.add("bg-clicked");
         }
     } else {
-        
+
     }
 }
 
@@ -193,7 +195,7 @@ async function postHumor(selecionado) {
         });
 
         let content = await response.json();
-        
+
         if (content.sucess) {
 
         } else {
@@ -210,7 +212,7 @@ async function postSintomas(selecionado) {
 
     const minhaDiv = document.getElementById(sintomas);
 
-    let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
+    let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd') //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, sintomas, iduser }
 
     if (minhaDiv.classList.contains("bg-unclicked")) {
@@ -259,7 +261,7 @@ async function postAtiv_fisica(selecionado) {
 
     const minhaDiv = document.getElementById(ativ);
 
-    let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
+    let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, ativ, iduser }
 
     if (minhaDiv.classList.contains("bg-unclicked")) {
@@ -291,7 +293,7 @@ async function postAtiv_fisica(selecionado) {
         });
 
         let content = await response.json();
-        
+
         if (content.sucess) {
 
         } else {
@@ -308,7 +310,7 @@ async function postTratamento(selecionado) {
 
     const minhaDiv = document.getElementById(tratamento);
 
-    let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
+    let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, tratamento, iduser }
 
     if (minhaDiv.classList.contains("bg-unclicked")) {
@@ -357,7 +359,7 @@ async function postSono(selecionado) {
 
     const minhaDiv = document.getElementById(sono);
 
-    let data = formatDate(new Date, 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
+    let data = formatDate(new Date(ano, mes, dia), 'aa-mm-dd'); //pesquisar como pegar o dia de hoje em javascript
     let dados = { data, sono, iduser }
 
     if (minhaDiv.classList.contains("bg-unclicked")) {

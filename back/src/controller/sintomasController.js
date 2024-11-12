@@ -43,6 +43,7 @@ async function getSintomas(request, response) {
     const query = "SELECT * from sintomas where user_id = ? AND data = ?";
 
     connection.query(query, params, (err, results) => {
+        console.log(results);
         if (results) { 
             response
             .status(201)
